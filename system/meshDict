@@ -1,0 +1,104 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | cfMesh: A library for mesh generation          |
+|  \\    /   O peration     |                                                |
+|   \\  /    A nd           | Author: Franjo Juretic                         |
+|    \\/     M anipulation  | E-mail: franjo.juretic@c-fields.com            |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version   2.0;
+    format    ascii;
+    class     dictionary;
+    location  "system";
+    object    meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile "ng.stl";
+
+minCellSize 0.01;
+
+maxCellSize 0.02;
+
+boundaryCellSize 0.01;
+localRefinement
+{
+    "gyroid"
+    {
+        cellSize 0.005;
+    }
+}
+//localRefinement
+//{
+//    "gyroid"
+//    {
+//        cellSize 0.01;
+//    }
+//}
+
+boundaryLayers
+{
+    nLayers 6;
+
+    thicknessRatio 1.1;
+
+    maxFirstLayerThickness 0.5;
+
+}
+//objectRefinements
+//{
+//    box1
+//    {
+//        type            box;
+//        cellSize        0.005;
+//        centre          (-0.5 0.5 0.5);
+//        lengthX         0.02;
+//        lengthY         0.02;
+//        lengthZ         0.02;
+//    }
+//    box2
+//    {
+//        type            box;
+//        cellSize        0.005;
+//        centre          (0.5 -0.5 0.5);
+//        lengthX         0.02;
+//        lengthY         0.02;
+//        lengthZ         0.02;
+//    }
+//    box3
+//    {
+//        type            box;
+//        cellSize        0.005;
+//        centre          (0.5 0.5 -0.5);
+//        lengthX         0.02;
+//        lengthY         0.02;
+//        lengthZ         0.02;
+//    }
+//}
+
+/*
+renameBoundary
+{
+    defaultName     fixedWalls;
+    defaultType     wall;
+
+    newPatchNames
+    {
+        "inlet.*"
+        {
+            type    patch;
+            newName inlet;
+        }
+
+        "outlet.*"
+        {
+            type    patch;
+            newName outlet;
+        }
+    }
+}
+
+*/
+// ************************************************************************* //
